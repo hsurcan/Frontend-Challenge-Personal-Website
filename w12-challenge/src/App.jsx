@@ -4,6 +4,10 @@ import { Provider } from 'react-redux';
 import { store } from './store/store'; 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { setTheme, setLang } from './store/homeSlice';
 
 //Components
 import Header from './components/Header';
@@ -13,6 +17,16 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 
 function App() {
+  const dispatch = useDispatch();
+  
+  const [localTheme] = useLocalStorage('theme', 'light');
+  const [localLang] = useLocalStorage('lang', 'tr');
+
+  useEffect(() => {
+    dispatch(setTheme(localTheme));
+    dispatch(setLang(localLang));
+  }, [localTheme, localLang, dispatch]);
+
   return (
     <Provider store={store}>
       <Router>
@@ -28,7 +42,7 @@ function App() {
               </main>
               <Footer />
             </Route>
-            
+
           //hata verme ihtimaline karşı
             <Route path="*">
               <div className="flex justify-center items-center h-screen">
