@@ -57,14 +57,20 @@ const Header = () => {
 };
 
   return (
-    <header className="w-full bg-custom-bg dark:bg-custom-dark-bg1 transition-colors duration-300 overflow-hidden">
+    <header className="relative w-full bg-custom-bg dark:bg-custom-dark-bg1 transition-colors duration-300 overflow-hidden z-10">
+  
+  <div className="absolute -top-11 left-[500px] w-28 h-28 bg-[#525252] rounded-full -z-10"></div>
+  <div className="absolute -right-16 top-[580px] w-52 h-16 bg-[#D8216B] rounded-l-full -z-10 translate-y-12"></div>
       
-      <div className="max-w-7xl mx-auto px-20 pt-16 flex justify-end items-center gap-5 text-xs font-bold tracking-widest">
+      <div className="mx-24 px-28 pt-16 flex justify-end items-center gap-6 text-xs font-bold tracking-widest">
 
         {/*TEMA BUTONU*/}
         <div className="flex items-center gap-2 cursor-pointer group" onClick={handleThemeToggle}>
           <div className="relative w-14 h-6 bg-custom-pink dark:bg-[#000000] rounded-full transition-all">
-            <div className= {`absolute top-1 right-1 w-4 h-4 bg-[#FFE86E] rounded-full transition-all duration-300 ${theme === 'dark' ? '-translate-x-8 bg-[#000] shadow-[inset_5px_0_0_0_#FFE86E]' : ''}`}></div>
+
+            <div className= {`absolute top-1 right-1 w-4 h-4 bg-[#FFE86E] rounded-full transition-all duration-300 ${theme === 'dark' ? '-translate-x-8 bg-transparent shadow-[inset_5px_0_0_0_#FFE86E]' 
+    : 'bg-[#FFE86E]'}`}></div>
+          
           </div>
           <span className="text-[#777777] text-sm dark:text-[#D9D9D9] group-hover:text-custom-pink transition-colors">
             {theme === 'light' ? 'DARK MODE' : 'LIGHT MODE'}
@@ -84,23 +90,23 @@ const Header = () => {
       </div>
 
 {/*İÇERİK*/}
-      <div className="max-w-7xl mx-auto px-20 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
-        <div className="relative flex-[1.5] text-center md:text-left order-2 md:order-1">
+      <div className="mx-20 px-28 py-10 md:pt-10 pb-28 flex flex-col md:flex-row items-center gap-10">
         
+        <div className="relative flex-[1.5] text-center md:text-left order-2 md:order-1">    
           <div className="relative inline-block mb-8">
             <h2 className="relative text-[#000] dark:text-[#fff] text-3xl tracking-widest font-light font-inter pb-8">{content.hi}</h2>
           
             <div className="absolute -left-2 top-[120px] -translate-y-1/2 w-36 rounded-md h-[30px] bg-custom-pink hidden md:block -z-0">
             </div>
-            <h1 className="relative text-4xl md:text-[42px]/normal font-light font-inter text-[#1F2937] dark:text-[#FFF] leading-relaxed mb-10 z-10">
+            <h1 className="relative text-[20px] md:text-[52px]/normal font-light font-inter text-[#1F2937] dark:text-[#FFF] mb-10 z-10">
             {content.title}
             </h1>
          </div>
 
 {/*İLETİŞİM*/}
-          <div className="flex gap-4 flex-col flex-wrap md:justify-start items-start text-lg">
+          <div className="flex flex-col flex-wrap md:text-lg">
 
-             <div className="flex gap-3">
+             <div className="flex gap-3 mb-4">
                 <a href="#" className="text-[#000] dark:text-[#D9D9D9] hover:text-custom-pink transition-colors">
                   <i class="fa-brands fa-linkedin-in text-4xl"></i>
                 </a>
@@ -110,7 +116,7 @@ const Header = () => {
                 </a>
              </div> 
 
-             <p className="text-base md:text-base/loose font-inter tracking-wider text-[#000] dark:text-[#D9D9D9]">
+             <p className="text-xl md:text-xl/loose font-inter tracking-wider text-[#000] dark:text-[#D9D9D9]">
     {content.currentRole.part1} <span className="text-custom-pink ">{content.currentRole.part2}</span> {content.currentRole.part3} <span className="text-custom-pink"> {content.currentRole.part4}</span> {content.currentRole.part5} 
     <br />
     {content.invite} <a onClick={handleInviteClick} href={`mailto:${content.email}`} className="text-custom-pink dark:text-custom-pink underline">{content.email}</a>
@@ -122,11 +128,11 @@ const Header = () => {
         {/*PROFİL FOTOĞRAFI*/}
         <div className="flex-1 order-1 md:order-2 flex justify-center md:justify-end">
           <div className="relative">
-             <div className="absolute -top-5 -left-5 w-full h-full bg-custom-pink rounded-[2rem]"></div>
+             <div className="absolute -top-6 -left-6 w-full h-full bg-custom-pink rounded-[2rem]"></div>
              <img 
                src= "/images/profilepic.jpg" 
                alt="Almila" 
-               className="w-96 h-96 md:w-96 md:h-96 object-cover rounded-[2rem] shadow-2xl relative z-10"
+               className="w-[250px] h-[250px] md:w-[400px] md:h-[400px] object-cover rounded-[2rem] shadow-2xl relative z-10"
              />
           </div>
         </div>

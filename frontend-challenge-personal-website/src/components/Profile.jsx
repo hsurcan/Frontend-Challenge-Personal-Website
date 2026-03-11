@@ -8,7 +8,10 @@ const Profile = () => {
 
   return (
     <section className="py-16 bg-custom-bg dark:bg-custom-dark-bg1 transition-colors border-t border-gray-100 dark:border-gray-800">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+ 
+  <div className="absolute -right-[310px] -top-[95px] w-[121px] h-[121px] border-[21px] border-[#D8216B] rounded-full -z-10 opacity-90"></div>
+
         <h2 className="text-3xl md:text-4xl font-inter font-light tracking-wide text-slate-900 dark:text-white mb-10 text-center md:text-center">
           {profile.title}
         </h2>
