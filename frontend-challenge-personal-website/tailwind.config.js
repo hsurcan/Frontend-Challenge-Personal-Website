@@ -8,12 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-       
-        'custom-dark-bg': '#252128',
+        'custom-bg': '#F4F4F4',
+        'custom-dark-bg1': '#2A262B',
+        'custom-dark-bg2': '#484148',
         'custom-dark-card': '#2A262E',
         'custom-pink': '#EA2678',
-        'custom-blue': '#0077B5', 
+        'custom-blue': '#82BBFF', 
     },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        playfair: ['Playfair Display', 'serif'],
+      },
   },
 },
   plugins: [],

@@ -7,34 +7,36 @@ const Footer = () => {
   const { footer } = data[lang];
 
   return (
-    <footer className="py-20 bg-[#F9F9F9] dark:bg-[#252128] transition-colors">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+    <footer className="py-20 bg-[#F9F9F9] dark:bg-custom-dark-bg2 transition-colors">
+      <div className="max-w-2xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-2">
         
-        {/* Sol Taraf: Büyük Çağrı Başlığı */}
-        <div className="flex-1 text-center md:text-left">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#1F2937] dark:text-[#AEBCCF] leading-tight max-w-md">
-            {footer.title}
-          </h2>
-          {/* Taslaktaki o mavi alt çizgi detayı */}
-          <div className="w-40 h-1 bg-[#82BBFF] mt-2 hidden md:block opacity-50"></div>
+        <div className="relative flex-1 text-center md:text-right ">
+          <h2 className="relative z-10 text-2xl md:text-4xl font-light font-inter text-[#000] dark:text-[#fff] leading-tight max-w-md">
+            {footer.title}</h2>
+     
+          <div className="absolute w-56 h-4 bg-[#82BBFF] dark:text-[#3968A0] -mt-14 mx-44 hidden md:block rounded-sm"></div>
         </div>
 
-        {/* Sağ Taraf: Linkler */}
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 font-bold tracking-wider">
+        {/* LINKLER*/}
+        <div className="flex flex-col md:flex-col items-start gap-4 md:gap-1 font-medium tracking-wider">
           {footer.links.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-lg transition-colors ${
-                link.name === 'Email' || link.name === 'E-posta'
-                  ? 'text-[#AF0C48] dark:text-[#EA2678]' // Taslaktaki vurgulu renk
-                  : 'text-[#1769FF] dark:text-[#82BBFF] hover:text-[#0077B5]'
-              }`}
-            >
-              {link.name}
-            </a>
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-lg transition-colors ${
+    link.name === 'Email'
+      ? 'text-custom-pink'
+      : link.name === 'Personal Blog'
+        ? 'text-[#000] dark:text-[#FFF]'
+        : link.name === 'LinkedIn'
+          ? 'text-[#0077B5] dark:text-[#3968A0]'
+          : 'text-[#1769FF] dark:text-custom-blue'
+  }`}
+              >
+                {link.name}
+              </a>
           ))}
         </div>
       </div>

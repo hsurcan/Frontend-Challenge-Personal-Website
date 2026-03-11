@@ -2,49 +2,48 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const ProjectCards = ({ project, index }) => {
-  const { lang } = useSelector((state) => state.home);
+  useSelector((state) => state.home);
   
-  // Taslaktaki gibi her iki kartın farklı arka plan renkleri olması için (Mavi ve Yeşil tonları)
   const bgColors = [
-    'bg-[#DDEEFE] dark:bg-[#2D3235]', // 1. Kart (Mavi tonu)
-    'bg-[#D9F6F1] dark:bg-[#495351]'  // 2. Kart (Yeşil tonu)
+    'bg-[#DDEEFE] dark:bg-[#2D3235]', 
+    'bg-[#D9F6F1] dark:bg-[#495351]'  
   ];
 
   return (
-    <div className={`flex flex-col rounded-3xl p-8 md:p-12 ${bgColors[index % 2]} transition-colors duration-300 shadow-sm hover:shadow-xl group`}>
-      <h3 className="text-2xl md:text-3xl font-bold text-[#1F2937] dark:text-[#AEBCCF] mb-4">
+    <div className={`flex flex-col rounded-2xl p-12 md: pb-[280px] ${bgColors[index % 2]} transition-colors duration-300 shadow-sm hover:shadow-xl group`}>
+     
+      <h3 className="text-2xl md:text-3xl font-playfair font-bold tracking-wide text-[#000] dark:text-[#fff] mb-4">
         {project.title}
       </h3>
       
-      <p className="text-sm md:text-base text-[#6B7280] dark:text-white mb-6 leading-relaxed flex-grow">
+      <p className="text-sm md:text-base pr-12 text-[#000] font-light tracking-wide dark:text-white leading-relaxed flex-grow">
         {project.description}
       </p>
 
-      {/* Etiketler (Tags) */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      {/* TAGLER */}
+      <div className={`flex flex-wrap gap-2 pr-12 ${project.title === "Are you bored?" ? 'mt-8 mb-10'  : 'mb-20' }`}>
         {project.tags.map((tag, i) => (
-          <span key={i} className="px-4 py-1 bg-white dark:bg-[#252128] rounded-full text-[10px] md:text-xs font-bold text-[#1F2937] dark:text-[#8F88FF] uppercase tracking-wider">
+          <span key={i} className="px-8 py-2 bg-white dark:bg-[#525252] rounded-full text-[12px] md:text-[16px] font-playfair font-bold text-[#000] dark:text-[#FFF] tracking-wider">
             {tag}
           </span>
         ))}
       </div>
 
-      {/* Linkler */}
-      <div className="flex justify-between items-center font-bold text-sm md:text-base mb-8">
-        <a href="#" className="text-[#1F2937] dark:text-[#CBF281] hover:underline underline-offset-4">
+      {/* LİNKLER */}
+      <div className={`flex justify-between items-center font-medium text-lg md:text-lg tracking-wide ${project.title === "Are you bored?" ? 'mt-10 mb-10'  : 'mb-20' }`}>
+        <a href="#" className="text-[#000] dark:text-[#fff] hover:underline underline-offset-4">
           {project.github}
         </a>
-        <a href="#" className="text-[#1F2937] dark:text-[#CBF281] hover:underline flex items-center gap-1">
+        <a href="#" className="text-[#000] dark:text-[#fff] hover:underline flex items-center gap-1">
           {project.app} <span>→</span>
         </a>
       </div>
 
-      {/* Proje Görseli (Laptop İçinde) */}
-      <div className="mt-auto overflow-hidden rounded-xl">
+      <div className="absolute mt-[475px] -translate-x-9 rounded-xl" >
         <img 
           src={project.img} 
           alt={project.title} 
-          className="w-full h-auto transform group-hover:scale-105 transition-transform duration-500" 
+          className="w-fit h-auto transform group-hover:scale-105 transition-transform duration-500" 
         />
       </div>
     </div>

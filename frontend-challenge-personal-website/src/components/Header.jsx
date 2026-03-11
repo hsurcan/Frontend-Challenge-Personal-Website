@@ -5,11 +5,13 @@ import { toast } from 'react-toastify';
 import axios from 'axios';  
 import data from '../data/data';
 
+
 const Header = () => {
   const dispatch = useDispatch();
   const { theme, lang } = useSelector((state) => state.home);
   const content = data[lang].header;
 
+//tema değiştirme
   const handleThemeToggle = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     dispatch(setTheme(newTheme));
@@ -20,6 +22,7 @@ const Header = () => {
     });
   };
 
+//dil değiştirme
   const handleLangChange = () => {
     const newLang = lang === 'en' ? 'tr' : 'en';
     dispatch(setLang(newLang));
@@ -27,6 +30,7 @@ const Header = () => {
     toast.success(newLang === 'tr' ? 'Dil Türkçe olarak ayarlandı' : 'Language set to English');
   };
 
+//email'e tıklandığında istek gitsin
   const handleInviteClick = async (e) => {
   e.preventDefault();
   
@@ -53,73 +57,82 @@ const Header = () => {
 };
 
   return (
-<header className="w-full bg-white dark:bg-[#252128] transition-colors duration-300 overflow-hidden">
-      {/* Üst Bar: Navigasyon & Kontroller */}
-      <div className="max-w-6xl mx-auto px-6 py-6 flex justify-end items-center gap-8 text-xs font-bold tracking-widest">
-        {/* Dil Seçici */}
-        <button onClick={handleLangChange} className="text-custom-pink hover:opacity-70 transition-opacity">
-          {lang === 'en' ? (
-            <span><span className="text-[#777777]">TÜRKÇE</span>'YE GEÇ</span>
-          ) : (
-            <span>SWITCH TO <span className="text-[#777777]">ENGLISH</span></span>
-          )}
-        </button>
+    <header className="w-full bg-custom-bg dark:bg-custom-dark-bg1 transition-colors duration-300 overflow-hidden">
+      
+      <div className="max-w-7xl mx-auto px-20 pt-16 flex justify-end items-center gap-5 text-xs font-bold tracking-widest">
 
-        {/* Dark Mode Toggle */}
-        <div className="flex items-center gap-3 cursor-pointer group" onClick={handleThemeToggle}>
-          <div className="relative w-14 h-6 bg-custom-pink rounded-full transition-all">
-            <div className={`absolute top-1 left-1 w-4 h-4 bg-[#FFE86E] rounded-full transition-transform duration-300 ${theme === 'dark' ? 'translate-x-8' : ''}`}></div>
+        {/*TEMA BUTONU*/}
+        <div className="flex items-center gap-2 cursor-pointer group" onClick={handleThemeToggle}>
+          <div className="relative w-14 h-6 bg-custom-pink dark:bg-[#000000] rounded-full transition-all">
+            <div className= {`absolute top-1 right-1 w-4 h-4 bg-[#FFE86E] rounded-full transition-all duration-300 ${theme === 'dark' ? '-translate-x-8 bg-[#000] shadow-[inset_5px_0_0_0_#FFE86E]' : ''}`}></div>
           </div>
-          <span className="text-[#777777] dark:text-[#D9D9D9] group-hover:text-custom-pink transition-colors">
+          <span className="text-[#777777] text-sm dark:text-[#D9D9D9] group-hover:text-custom-pink transition-colors">
             {theme === 'light' ? 'DARK MODE' : 'LIGHT MODE'}
           </span>
         </div>
+
+        <p className="text-[#777777] dark:text-[#D9D9D9]">|</p>
+
+      {/*DİL BUTONU*/}
+        <button onClick={handleLangChange} className="text-custom-pink text-sm hover:opacity-70 transition-opacity">
+          {lang === 'en' ? (
+            <span>TÜRKÇE<span className="text-[#777777]">'YE GEÇ</span></span>
+          ) : (
+            <span><span className="text-[#777777]">SWITCH TO </span><span>ENGLISH</span></span>
+          )}
+        </button>
       </div>
 
-      {/* Hero İçeriği */}
-      <div className="max-w-6xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
-        <div className="flex-[1.5] text-center md:text-left order-2 md:order-1">
-          {/* İsim Vurgusu */}
-          <div className="relative inline-block mb-6">
-            <h2 className="text-custom-pink text-2xl font-medium relative z-10">{content.hi}</h2>
-            <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-12 h-[2px] bg-custom-pink hidden md:block"></div>
-          </div>
+{/*İÇERİK*/}
+      <div className="max-w-7xl mx-auto px-20 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
+        <div className="relative flex-[1.5] text-center md:text-left order-2 md:order-1">
+        
+          <div className="relative inline-block mb-8">
+            <h2 className="relative text-[#000] dark:text-[#fff] text-3xl tracking-widest font-light font-inter pb-8">{content.hi}</h2>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-[#1F2937] dark:text-[#AEBCCF] leading-[1.1] mb-10">
+            <div className="absolute -left-2 top-[120px] -translate-y-1/2 w-36 rounded-md h-[30px] bg-custom-pink hidden md:block -z-0">
+            </div>
+            <h1 className="relative text-4xl md:text-[42px]/normal font-light font-inter text-[#1F2937] dark:text-[#FFF] leading-relaxed mb-10 z-10">
             {content.title}
-          </h1>
+            </h1>
+         </div>
 
-          {/* Sosyal Medya & İletişim */}
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 text-lg">
-             <div className="flex gap-3 mr-4">
-                <a href="#" className="text-[#1F2937] dark:text-[#AEBCCF] hover:text-custom-pink transition-colors">
-                  <i className="fab fa-linkedin text-3xl"></i>
+{/*İLETİŞİM*/}
+          <div className="flex gap-4 flex-col flex-wrap md:justify-start items-start text-lg">
+
+             <div className="flex gap-3">
+                <a href="#" className="text-[#000] dark:text-[#D9D9D9] hover:text-custom-pink transition-colors">
+                  <i class="fa-brands fa-linkedin-in text-4xl"></i>
                 </a>
-                <a href="#" className="text-[#1F2937] dark:text-[#AEBCCF] hover:text-custom-pink transition-colors">
-                  <i className="fab fa-github text-3xl"></i>
+
+                <a href="#" className="text-[#000] dark:text-[#D9D9D9] hover:text-custom-pink transition-colors">
+                  <i className="fab fa-github text-4xl"></i>
                 </a>
-             </div>
-             <p className="text-sm md:text-base text-[#6B7280] dark:text-white leading-relaxed">
-               {content.currentRole} <br />
-               <span className="text-[#AF0C48] dark:text-custom-pink font-medium">{content.invite}</span>{" "}
-               <a onClick={handleInviteClick} href={`mailto:${content.email}`} className="text-[#AF0C48] dark:text-custom-pink underline">{content.email}</a>
-             </p>
+             </div> 
+
+             <p className="text-base md:text-base/loose font-inter tracking-wider text-[#000] dark:text-[#D9D9D9]">
+    {content.currentRole.part1} <span className="text-custom-pink ">{content.currentRole.part2}</span> {content.currentRole.part3} <span className="text-custom-pink"> {content.currentRole.part4}</span> {content.currentRole.part5} 
+    <br />
+    {content.invite} <a onClick={handleInviteClick} href={`mailto:${content.email}`} className="text-custom-pink dark:text-custom-pink underline">{content.email}</a>
+  </p>
+      
           </div>
         </div>
 
-        {/* Profil Resmi (Tasarımdaki Pembe Dekorlu Yapı) */}
-        <div className="flex-1 order-1 md:order-2 flex justify-center">
+        {/*PROFİL FOTOĞRAFI*/}
+        <div className="flex-1 order-1 md:order-2 flex justify-center md:justify-end">
           <div className="relative">
-             {/* Kırmızımsı/Pembe Dikdörtgen Dekor */}
-             <div className="absolute -top-4 -right-4 w-full h-full bg-[#EA2678] rounded-2xl -z-10"></div>
+             <div className="absolute -top-5 -left-5 w-full h-full bg-custom-pink rounded-[2rem]"></div>
              <img 
-               src="https://picsum.photos/400/400" 
+               src= "/images/profilepic.jpg" 
                alt="Almila" 
-               className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-xl border-2 border-transparent"
+               className="w-96 h-96 md:w-96 md:h-96 object-cover rounded-[2rem] shadow-2xl relative z-10"
              />
           </div>
         </div>
       </div>
+
+ 
     </header>
   );
 };
