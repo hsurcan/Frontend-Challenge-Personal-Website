@@ -59,7 +59,7 @@ const Header = () => {
   return (
     <header className="relative w-full bg-custom-bg dark:bg-custom-dark-bg1 transition-colors duration-300 overflow-hidden z-10">
   
-  <div className="absolute -top-11 left-[500px] w-28 h-28 bg-[#525252] rounded-full -z-10"></div>
+  <div className="absolute -top-11 left-[500px] w-28 h-28 bg-[#D9D9D9] dark:bg-[#525252] rounded-full -z-10"></div>
   <div className="absolute -right-16 top-[580px] w-52 h-16 bg-[#D8216B] rounded-l-full -z-10 translate-y-12"></div>
       
       <div className="mx-24 px-28 pt-16 flex justify-end items-center gap-6 text-xs font-bold tracking-widest">

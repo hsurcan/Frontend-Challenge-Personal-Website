@@ -12,9 +12,9 @@ const Skills = () => {
     <section className="py-20 bg-white dark:bg-custom-dark-bg2 transition-colors relative">
     
       <div className="max-w-6xl mx-auto mb-12 px-14 items-center justify-center relative z-10">
-        <div className="absolute bottom-[300px] right-[50px] -translate-x-1/2 w-[120px] h-[120px] border-[20px] border-[#525252] rounded-full -z-10"></div>
+        <div className="absolute bottom-[300px] right-[50px] -translate-x-1/2 w-[120px] h-[120px] border-[20px] border-[#D9D9D9] dark:border-[#525252] rounded-full -z-10"></div>
         <div className="absolute -left-[280px] top-[330px] -translate-y-1/2 
-                  w-28 h-12 bg-[#D9D9D9] dark:bg-[#525252] rounded-r-full -z-10 -ml-4 md:ml-0"></div>
+                  w-28 h-12 bg-[#525252] rounded-r-full -z-10 -ml-4 md:ml-0"></div>
 
         <h2 className="text-4xl md:text-5xl font-light font-inter tracking-wide text-[#1F2937] dark:text-[#F4F4F4] mb-16 text-center items-center justify-center">
           {lang === 'tr' ? 'Yetenekler' : 'Skills'}
