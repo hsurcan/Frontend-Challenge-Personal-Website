@@ -23,6 +23,7 @@ const data = {
     ],
     profile: {
       title: "Profile",
+      firstName: "Almila",
       basicInfo: {
         title: "Basic Information",
         items: [

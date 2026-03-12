@@ -35,13 +35,13 @@ const Header = () => {
   e.preventDefault();
   
   const user = {
-    name: "Amila",
-    role: "Full-stack Developer",
-    action: "Invitation Sent"
+    name: "Almila",
   };
 
   try {
-    const response = await axios.post('https://reqres.in/api/workintech', user);
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    const response = await axios.post(apiUrl, user);
     
     if (response.status === 201) {
       toast.success(lang === 'tr' ? "Davet başarıyla gönderildi!" : "Invitation sent successfully!", {
